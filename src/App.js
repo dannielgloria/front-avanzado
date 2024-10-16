@@ -1,11 +1,15 @@
 import React from "react";
 import Header from "./components/Header";
+import { Button, Container } from "@mui/material";
 
 function App() {
   return (
-    <div>
+    <Container>
       <Header />
-    </div>
+      <Button variant="contained" color="success">
+        Oprime me
+      </Button>
+    </Container>
   );
 }
 
