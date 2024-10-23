@@ -11,6 +11,8 @@ const Form = () =>{
         age:     '',
     });
 
+//obtener la edad apartir de la fecha
+
     const handleSubmint = (e) =>{
         e.preventDefault();
 
