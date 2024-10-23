@@ -1,34 +1,32 @@
 import React from "react";
-import { Box, Button, Grid2, MenuItem, TextField, Typography } from "@mui/material";
-import useForm from "../hooks/useForm"
+import { Box, Button, Grid, MenuItem, TextField, Typography } from "@mui/material";
+import useForm from "../hooks/useForm";
 
-const Form = () =>{
-    const [formData, handleChange, resetForm] = useForm({ 
-        name:    '', 
-        email:   '', 
-        date:    '', 
+const Form = () => {
+    const [formData, handleChange, resetForm] = useForm({
+        name: '', 
+        email: '', 
+        date: '', 
         country: '', 
-        age:     '',
+        age: '',
     });
 
-//obtener la edad apartir de la fecha
-
-    const handleSubmint = (e) =>{
+    const handleSubmint = (e) => {
         e.preventDefault();
 
-        if (!/\S+@\S+.\S+/.test(formData.email)) {
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
             alert("Por favor ingresa un correo válido.");
             return;
         }
 
-        const age = parseInt(formData.age)
-        if (isNaN(age) || age < 0 || age > 150){
+        const age = parseInt(formData.age);
+        if (isNaN(age) || age < 0 || age > 150) {
             alert("La edad debe estar entre 0 y 150");
             return;
         }
-        
-        if (age < 18){
-            alert("Usted esta chiquit@ no puede usar este formulario, ve a mimir (dormir)")
+
+        if (age < 18) {
+            alert("Usted está chiquit@, no puede usar este formulario. ¡Ve a mimir!");
             return;
         }
 
@@ -42,9 +40,9 @@ const Form = () =>{
                 Formulario en REACT Avanzado
             </Typography>
             <form onSubmit={handleSubmint}>
-                <Grid2 container spacing={2}>
-                    <Grid2 item xs={12}>
-                        <TextField 
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <TextField
                             label="Nombre"
                             name="name"
                             value={formData.name}
@@ -52,9 +50,9 @@ const Form = () =>{
                             fullWidth
                             required
                         />
-                    </Grid2>
-                    <Grid2 item xs={12}>
-                        <TextField 
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
                             label="Correo"
                             name="email"
                             type="email"
@@ -63,37 +61,38 @@ const Form = () =>{
                             fullWidth
                             required
                         />
-                    </Grid2>
-                    <Grid2 item xs={12}>
-                        <TextField 
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
                             label="Fecha"
                             name="date"
                             type="date"
                             value={formData.date}
                             onChange={handleChange}
                             fullWidth
-                            InputLabelProps={{ shrink: true}}
+                            InputLabelProps={{ shrink: true }}
                             required
                         />
-                    </Grid2>
-                    <Grid2 item xs={12}>
-                    <TextField
-                        select
-                        label="País"
-                        name="country"
-                        value={formData.country}
-                        onChange={handleChange}
-                        fullWidth
-                        required
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            select
+                            label="País"
+                            name="country"
+                            value={formData.country}
+                            onChange={handleChange}
+                            fullWidth
+                            required
+                            inputProps={{ 'aria-label': 'País' }}
                         >
                             <MenuItem value="Mexico">México</MenuItem>
                             <MenuItem value="USA">USA</MenuItem>
                             <MenuItem value="Canada">Canadá</MenuItem>
                             <MenuItem value="Argentina">Argentina</MenuItem>
-                            </TextField>
-                    </Grid2>
-                    <Grid2 item xs={12}>
-                        <TextField 
+                        </TextField>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
                             label="Edad"
                             name="age"
                             type="number"
@@ -102,18 +101,19 @@ const Form = () =>{
                             fullWidth
                             required
                         />
-                    </Grid2>
-                    <Grid2 item xs={12}>
-                        <Button 
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button
                             type="submit"
                             variant="contained"
                             color="primary"
                             fullWidth
-                            sx={{ mt: 2}}
-                        />
-                    </Grid2>
-                    
-                </Grid2>
+                            sx={{ mt: 2 }}
+                        >
+                            Enviar
+                        </Button>
+                    </Grid>
+                </Grid>
             </form>
         </Box>
     );
